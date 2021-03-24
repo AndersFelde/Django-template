@@ -1,0 +1,103 @@
+.navbar {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    text-align: center;
+    width: 100%;
+    background-color: black;
+}
+
+.navbar .collapse {
+    text-align: center;
+    width: 100%;
+}
+
+.navbar .list-inline {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.navbar .nav-link {
+    color: gray;
+}
+
+.navbar a:hover {
+    color: white;
+}
+
+.navbar img:hover {
+    background-color: white;
+}
+
+.smart-scroll {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.scrolled-down {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.scrolled-up {
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+}
+
+footer {
+    margin-top: 10%;
+    background-color: black;
+}
+
+footer div {
+    color: white;
+    background-color: black;
+}
+
+.container {
+    margin-top: 3%;
+}
+
+.hoverEffect:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+}
+
+.rotate {
+    animation: rotation 2.5s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate3d(1, 30, -3, 0deg);
+    }
+    to {
+        transform: rotate3d(1, 30, -3, 359deg);
+    }
+}
+
+form select {
+    text-align-last: center;
+}
+
+form button {
+    margin: auto;
+    display: block;
+}
+
+td {
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
