@@ -55,6 +55,13 @@ footer div {
 
 .container {
     margin-top: 3%;
+    width: 50%;
+}
+
+form {
+    display: block;
+    width: 50%;
+    margin: auto;
 }
 
 .hoverEffect:hover {
