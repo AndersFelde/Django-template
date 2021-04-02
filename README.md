@@ -60,7 +60,7 @@ look at exampleModel.py to steal code
 - add admin.site.register(modelName) i webpage/models.py
 	from .submodels.testModel1 import modelName
 
-l- og in to http://localhost:8000/admin to view the model
+- log in to http://localhost:8000/admin to view the model
 	admin:admin
 
 Tips
