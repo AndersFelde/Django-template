@@ -2,8 +2,7 @@
 
 ### Rename your project
 
-> Not tested after adding models!
-
+> Not tested after adding models! Make sure to do it early in the project
 ```
 python rename.py oldName newName
 ```
