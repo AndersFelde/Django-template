@@ -6,8 +6,8 @@ class Model2(models.Model):
     model1 = models.ForeignKey(Model1,
                                on_delete=models.CASCADE,
                                related_name="lag")
-    id = models.IntegerField()
-    text = models.CharField()
+    integer = models.IntegerField()
+    name = models.CharField(max_length=45)
 
     def __str__(self):
-        return self.id
+        return self.name
