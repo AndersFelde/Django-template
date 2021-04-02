@@ -1,4 +1,4 @@
-## Heldagsprøve i informasjonsteknologi 2
+## Django template - with bootstrap
 
 ### Rename your project
 
