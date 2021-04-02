@@ -2,7 +2,7 @@
 
 ### Rename your project
 
-> Not tested after adding models
+> Not tested after adding models!
 
 ```
 python rename.py oldName newName
@@ -22,43 +22,49 @@ pip install django
 python manage.py runserver
 ```
 
-### Website will now be accessible on http://localhost:8000
+> Website will now be accessible on http://localhost:8000
 
 ## WIKI
 
-### For å legge til ny side
+### Add a new page
 
 ```
-lag side.html i webpage/templates/webpage/side.html
-lag side.py i webpage/views/side.py
-legg til path("side", side.side, name="side"), i webpage/urls.py
+- create side.html in webpage/templates/webpage/
+- create side.py in webpage/views/side.py
+- add path("side", side.side, name="side"), in webpage/urls.py
 
-kopier kode fra index.py til side.py
-	endre index.html til side.html
-	for å sende data, bruk "context" parameter
+- copy code from index.py to side.py
+	change "index.html" to "side.html"
+	to send data, use "context" parameter in render()
 
-kopier kode fra index.html til side.html
-	endre title til "side"
-	endre value på active element til "side"
+- copy code from index.html to side.html
+	change title to "side"
+	change value of active element to "side"
 
-endre webpage/templates/webpage/includes/navbar.html
-	legg til nytt element i navbar
-	kopier kode over
+- change webpage/templates/webpage/includes/navbar.html
+	add a new element in navbar
 ```
 
-### For å legge til model
+### Adding a new model
 
 ```
-Se exampleModel.py for å stjele kode
+- create a new file "testModel.py" in webpage/submodels/
 
-kjør python manage.py makemigrations webpage
-kjør python manage.py migrate
+look at exampleModel.py to steal code
 
-legg til admin.site.register(ModelNavn) i webpage/models.py
+- import model in webpage/models.py
+	from .submodels.testModel1 import modelName
 
-logg inn på http://localhost:8000/admin for å se på modellen
+- run python manage.py makemigrations webpage
+- run python manage.py migrate
+
+- add admin.site.register(modelName) i webpage/models.py
+	from .submodels.testModel1 import modelName
+
+l- og in to http://localhost:8000/admin to view the model
 	admin:admin
 
 Tips
-	definer __str__ i model for at den skal se bra ut på admin-page
+	define __str__ in a model to make it look better on the admin page
+		make it return the name or id of the model
 ```

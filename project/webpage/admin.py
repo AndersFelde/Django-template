@@ -1,5 +1,6 @@
 from django.contrib import admin
-# admin:admin
+#  from .submodels.model1 import Model1
 
-# Register your models here.
-#  admin.site.register(Lag)
+#  admin.site.register(Model)
+
+# admin:admin

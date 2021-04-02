@@ -1,11 +1,9 @@
 from django.db import models
 
+# from .submodels.model1 import Model1
+# from .submodels.model2 import Model2
+
 #  Husk å adde til admin.py
-#  from .models import Lag, Kamp, Resultat, Side
-#  admin.site.register(Lag)
-#  admin.site.register(Kamp)
-#  admin.site.register(Resultat)
-#  admin.site.register(Side)
 
 #  python manage.py makemigrations webpage
 #  python mange.py migrate
