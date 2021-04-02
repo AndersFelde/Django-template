@@ -57,7 +57,7 @@ look at exampleModel.py to steal code
 - run python manage.py makemigrations webpage
 - run python manage.py migrate
 
-- add admin.site.register(modelName) i webpage/models.py
+- add admin.site.register(modelName) in webpage/admin.py
 	from .submodels.testModel1 import modelName
 
 - log in to http://localhost:8000/admin to view the model
