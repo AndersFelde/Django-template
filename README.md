@@ -1,5 +1,13 @@
 ## Heldagsprøve i informasjonsteknologi 2
 
+### Rename your project
+
+> Not tested after adding models
+
+```
+python rename.py oldName newName
+```
+
 ### If you don't have flask installed run
 
 ```
