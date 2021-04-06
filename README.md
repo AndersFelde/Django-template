@@ -36,10 +36,7 @@ python manage.py runserver
 
 - copy code from `index.py` to `page.py`
 	- change _index.html_ to _page.html_
-	- to send data, use `context` parameter in `render()`
-		- pass a dictionary `{test: "123"}`
-		- access in html with `{{ test }}`
-			- will output `123`
+	- to send data and receive data see: *[Sending and receiving data](https://github.com/AndersFelde/Django-template#sending-and-receiving-data)*
 
 - copy code from `index.html` to `page.html`
 	- change `title` to _page_
@@ -111,6 +108,22 @@ In the HTML write:
     {% endif %}
 
 The first line checks if the email variable is set, if so it prints the value of email and passwordLength
+
+## Sesssions
+
+Sessions lets you temporarlily save data in the browser-session.
+
+### Saving session data
+`request.session['password'] = password`
+> If you are modifying for example an entry inside a dictionary: `request.session['creds']['password'] = password` you have to manuallet set `request.session.modified = True`
+
+### Get session value by key
+`my_car = request.session['password']`
+
+### Delete a session value
+`del request.session['password']`
+
+> For more about session visit: [Sesssions | Django Tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions)
 
 ## Adding a new model
 
