@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import index, test1
+from .views import index, formPage
 
 urlpatterns = [
     path("", index.index, name="index"),
-    path("test1", test1.test1, name="test1"),
+    path("formPage", formPage.formPage, name="formPage"),
 ]
