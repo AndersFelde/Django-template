@@ -28,7 +28,7 @@ python manage.py runserver
 > For a full step-by-step guide visit: [Writing your first Django app](https://docs.djangoproject.com/en/3.1/intro/tutorial01/)
 
 ## Add a new page
-
+> Replace *page* with what the name of the page will be, for example: *blog*
 - create `page.html` in `webpage/templates/webpage/`
 - create `page.py` in `webpage/views/`
 - add `path("page", page.page, name="page")`, in `webpage/urls.py`
@@ -55,21 +55,23 @@ python manage.py runserver
 
 ##### POST
 This is the example form which the user fills out
-
+```jinja
     <form method="POST">
         {% csrf_token %}
 	    <input name="email" type="email">
 	    <input name="password" type="password">
 	    <button type="submit">Submit</button>
 	</form>
+```
 > The csrf_token is mandatory in Django. It is a security-feature to prevent XXS-attacks.
 
 When the user submits the form, what the user typed into the input-fields is sent with the request.
 To get the values in python:
-
+```python
     if request.method == "POST":
 	    email = request.POST.get("email")
 	    password = request.POST.get("password")
+```
 The first line check if the method of the request is "POST", which indicates that the user has submitted the form.
 > The default request method is GET
 
@@ -82,10 +84,11 @@ When the user hits the Submit-button, the user will be redirected to a URL that 
 
     http://localhost/form.html?email=joe@mama.com&password=password123
 What the user typed in to the fields will be represented in the URL. To get the data in python:
-
+```python
     if "password" in request.GET:
 	    email = request.GET.get("email")
 	    password = request.GET.get("password")
+```
 In the first line we check if the "password" parameter exists in the URL. If it does it gets value of the "email" and "password" parameters.
 
 ### Sending data
@@ -93,20 +96,21 @@ Let's say you now want to send confirmation to the user that you received their 
 
 To send data to the HTML-template use the ***context*** parameter in the *render*-function:
 >The parameter requires a dictionary
-
+```python
     return render(request,
               "webpage/formPage.html",
               context={"email": email, "passwordLength": len(password)})
-
+```
 In the HTML write:
 
+```jinja
     {% if email %}
     <p>
 	    Thank you for signing up: {{ email }} <br>
 	    Your password is {{ passwordLength }} characters long
     </p>
     {% endif %}
-
+```
 The first line checks if the email variable is set, if so it prints the value of email and passwordLength
 
 ## Sesssions
