@@ -1,13 +1,14 @@
-## Django template - with bootstrap
 
-### Rename your project
+# Django template - with bootstrap
+
+## Rename your project
 
 > Not tested after adding models! Make sure to do it early in the project
 ```
 python rename.py oldName newName
 ```
 
-### If you don't have flask installed run
+## If you don't have flask installed run
 
 ```
 pip3 install django
@@ -15,7 +16,7 @@ or
 pip install django
 ```
 
-### To start the server
+## To start the server
 
 ```
 python manage.py runserver
@@ -23,9 +24,10 @@ python manage.py runserver
 
 > Website will now be accessible on http://localhost:8000
 
-## WIKI
+# WIKI
+> For a full step-by-step guide visit: [Writing your first Django app](https://docs.djangoproject.com/en/3.1/intro/tutorial01/)
 
-### Add a new page
+## Add a new page
 
 - create `page.html` in `webpage/templates/webpage/`
 - create `page.py` in `webpage/views/`
@@ -47,11 +49,11 @@ python manage.py runserver
 - change `webpage/templates/webpage/includes/navbar.html`
 	- add a new element in navbar
 
-> For more information about html template visit: [Templates | Django documentation](https://docs.djangoproject.com/en/3.1/topics/templates/)
+> For more information visit: [Writing your first Django app](https://docs.djangoproject.com/en/3.1/intro/tutorial03/)
 
-***
 
-### Adding a new model
+
+## Adding a new model
 
 
 - create a new file "testModel.py" in webpage/submodels/
@@ -68,12 +70,71 @@ python manage.py runserver
 
 
 - log in to http://localhost:8000/admin to view the model
-	- >admin:admin
+	- *admin:admin*
 > For more information about html template visit: [Models | Django documentation](https://docs.djangoproject.com/en/3.1/topics/db/models/) 
 
 
-***
 
 Tips:
 - define `__str__` in a model to make it look better on the admin page
 	- make it return the name or id of the model
+
+
+
+## Sending and receiving data to html
+
+### Receiving data
+##### GET
+This is the example form which the user fills out
+
+    <form>
+        {% csrf_token %}
+	    <input name="email" type="email">
+	    <input name="password" type="password">
+	    <button type="submit">Submit</button>
+	</form>
+When the user hits the Submit-button, the user will be redirected to a URL that looks like this:
+> The csrf_token is mandatory in Django. It is a security-feature to prevent XXS-attacks.
+
+    http://localhost/form.html?email=joe@mama.com&password=password123
+What the user typed in to the fields will be represented in the URL. To get the data in python:
+
+    if "password" in request.GET:
+	    email = request.GET.get("email")
+	    password = request.GET.get("password")
+In the first line we check if the "password" parameter exists in the URL. If it does it gets value of the "email" and "password" parameters.
+
+##### POST
+The same form will be used, except the first line is changed to:
+
+    <form method="POST">
+When using POST-method in a form the data is no longer represented in the URL, but in the request itself.
+To get the values in python:
+
+    if request.method == "POST":
+	    email = request.POST.get("email")
+	    password = request.POST.get("password")
+The first line check if the method of the request is "POST", which indicates that the user has submitted the form.
+> The default request method is GET
+
+### Sending data
+Let's say you now want to send confirmation to the user that you received their email and password. We have now stored the values in variables, but want to represent them in the HTML.
+
+To send data to the HTML-template use the ***context*** parameter in the *render*-function:
+>The parameter requires a dictionary
+
+    return render(request,
+              "webpage/formPage.html",
+              context={"email": email, "passwordLength": len(password)})
+
+In the HTML write:
+
+    {% if email %}
+    <p>
+	    Thank you for signing up: {{ email }} <br>
+	    Your password is {{ passwordLength }} characters long
+    </p>
+    {% endif %}
+
+The first line checks if the email variable is set, if so it prints the value of email and passwordLength
+
