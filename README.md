@@ -68,7 +68,7 @@ python manage.py runserver
 
 
 - log in to http://localhost:8000/admin to view the model
->admin:admin
+	- >admin:admin
 > For more information about html template visit: [Models | Django documentation](https://docs.djangoproject.com/en/3.1/topics/db/models/) 
 
 
