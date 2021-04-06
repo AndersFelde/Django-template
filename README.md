@@ -30,10 +30,14 @@ python manage.py runserver
 - create `page.html` in `webpage/templates/webpage/`
 - create `page.py` in `webpage/views/`
 - add `path("page", page.page, name="page")`, in `webpage/urls.py`
+	- `from .views import page`
 
 - copy code from `index.py` to `page.py`
 	- change _index.html_ to _page.html_
 	- to send data, use `context` parameter in `render()`
+		- pass a dictionary `{test: "123"}`
+		- access in html with `{{ test }}`
+			- will output `123`
 
 - copy code from `index.html` to `page.html`
 	- change `title` to _page_
@@ -42,6 +46,8 @@ python manage.py runserver
 
 - change `webpage/templates/webpage/includes/navbar.html`
 	- add a new element in navbar
+
+> For more information about html template visit: [Templates | Django documentation](https://docs.djangoproject.com/en/3.1/topics/templates/)
 
 ***
 
