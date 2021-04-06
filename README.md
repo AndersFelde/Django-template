@@ -59,7 +59,7 @@ python manage.py runserver
 ##### POST
 This is the example form which the user fills out
 
-    <form>
+    <form method="POST">
         {% csrf_token %}
 	    <input name="email" type="email">
 	    <input name="password" type="password">
