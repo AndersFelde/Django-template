@@ -54,7 +54,9 @@ python manage.py runserver
 ## Sending and receiving data
 
 ### Receiving data
-##### GET
+
+
+##### POST
 This is the example form which the user fills out
 
     <form>
@@ -63,8 +65,23 @@ This is the example form which the user fills out
 	    <input name="password" type="password">
 	    <button type="submit">Submit</button>
 	</form>
-When the user hits the Submit-button, the user will be redirected to a URL that looks like this:
 > The csrf_token is mandatory in Django. It is a security-feature to prevent XXS-attacks.
+
+When the user submits the form, what the user typed into the input-fields is sent with the request.
+To get the values in python:
+
+    if request.method == "POST":
+	    email = request.POST.get("email")
+	    password = request.POST.get("password")
+The first line check if the method of the request is "POST", which indicates that the user has submitted the form.
+> The default request method is GET
+
+##### GET
+The same form will be used, except the first line is changed to:
+
+    <form method="GET">
+
+When the user hits the Submit-button, the user will be redirected to a URL that looks like this:
 
     http://localhost/form.html?email=joe@mama.com&password=password123
 What the user typed in to the fields will be represented in the URL. To get the data in python:
@@ -73,19 +90,6 @@ What the user typed in to the fields will be represented in the URL. To get the 
 	    email = request.GET.get("email")
 	    password = request.GET.get("password")
 In the first line we check if the "password" parameter exists in the URL. If it does it gets value of the "email" and "password" parameters.
-
-##### POST
-The same form will be used, except the first line is changed to:
-
-    <form method="POST">
-When using POST-method in a form the data is no longer represented in the URL, but in the request itself.
-To get the values in python:
-
-    if request.method == "POST":
-	    email = request.POST.get("email")
-	    password = request.POST.get("password")
-The first line check if the method of the request is "POST", which indicates that the user has submitted the form.
-> The default request method is GET
 
 ### Sending data
 Let's say you now want to send confirmation to the user that you received their email and password. We have now stored the values in variables, but want to represent them in the HTML.
