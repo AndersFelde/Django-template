@@ -51,37 +51,7 @@ python manage.py runserver
 
 > For more information visit: [Writing your first Django app](https://docs.djangoproject.com/en/3.1/intro/tutorial03/)
 
-
-
-## Adding a new model
-
-
-- create a new file "testModel.py" in webpage/submodels/
-	- look at exampleModel.py to steal code
-
-- import model in webpage/models.py
-	- `from .submodels.testModel1 import modelName`
-
-- run `python manage.py makemigrations webpage`
-- run `python manage.py migrate`
-
-- add admin.site.register(modelName) in webpage/admin.py
-	- `from .submodels.testModel1 import modelName`
-
-
-- log in to http://localhost:8000/admin to view the model
-	- *admin:admin*
-> For more information about html template visit: [Models | Django documentation](https://docs.djangoproject.com/en/3.1/topics/db/models/) 
-
-
-
-Tips:
-- define `__str__` in a model to make it look better on the admin page
-	- make it return the name or id of the model
-
-
-
-## Sending and receiving data to html
+## Sending and receiving data
 
 ### Receiving data
 ##### GET
@@ -138,3 +108,28 @@ In the HTML write:
 
 The first line checks if the email variable is set, if so it prints the value of email and passwordLength
 
+## Adding a new model
+
+
+- create a new file "testModel.py" in webpage/submodels/
+	- look at exampleModel.py to steal code
+
+- import model in webpage/models.py
+	- `from .submodels.testModel1 import modelName`
+
+- run `python manage.py makemigrations webpage`
+- run `python manage.py migrate`
+
+- add admin.site.register(modelName) in webpage/admin.py
+	- `from .submodels.testModel1 import modelName`
+
+
+- log in to http://localhost:8000/admin to view the model
+	- *admin:admin*
+> For more information about html template visit: [Models | Django documentation](https://docs.djangoproject.com/en/3.1/topics/db/models/) 
+
+
+
+Tips:
+- define `__str__` in a model to make it look better on the admin page
+	- make it return the name or id of the model
